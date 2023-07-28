@@ -15,7 +15,7 @@ awesome-git zsh pamixer imagemagick ncmpcpp mpd mpDris2 brightnessctl inotifywai
 ~ $ git clone --depth 1 --branch the-awesome-config https://github.com/chadcat5207/fuyu ~/.config/awesome
 ```
 
-3. Make a secrets file at `config/key.lua`
+3. Make a secrets file at `config/keys.lua`
 ```lua
 local M = {
   openweatherapi = "your_key_here",
