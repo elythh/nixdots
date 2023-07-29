@@ -20,7 +20,7 @@ local drawing     = wibox.widget {
   horizontal_fit_policy = "fit",
   vertical_fit_policy = "fit",
   image = helpers.cropSurface(2,
-    gears.surface.load_uncached("/home/namish/.config/awesome/theme/pics/tp/" ..
+    gears.surface.load_uncached("/home/gwen/.config/awesome/theme/pics/tp/" ..
       string.lower(currTheme) .. ".png"))
 }
 local name        = wibox.widget {
@@ -72,7 +72,7 @@ local finalwidget = wibox.widget {
                     pos = pos - 1
                     currTheme = themes[pos]
                     drawing.image = helpers.cropSurface(2,
-                      gears.surface.load_uncached("/home/namish/.config/awesome/theme/pics/tp/" ..
+                      gears.surface.load_uncached("/home/gwen/.config/awesome/theme/pics/tp/" ..
                         string.lower(currTheme) .. ".png"))
                     name.markup = currTheme
                   end
@@ -90,7 +90,7 @@ local finalwidget = wibox.widget {
                     pos = pos + 1
                     currTheme = themes[pos]
                     drawing.image = helpers.cropSurface(2,
-                      gears.surface.load_uncached("/home/namish/.config/awesome/theme/pics/tp/" ..
+                      gears.surface.load_uncached("/home/gwen/.config/awesome/theme/pics/tp/" ..
                         string.lower(currTheme) .. ".png"))
                     name.markup = currTheme
                   end
