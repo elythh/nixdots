@@ -76,6 +76,13 @@ awful.keyboard.append_global_keybindings {
     on_press    = function() awful.spawn("kitty zellij") end,
   },
   awful.key {
+    modifiers   = { mod.super, mod.alt },
+    key         = 'Return',
+    description = 'open a terminal with Zellij active session',
+    group       = 'launcher',
+    on_press    = function() awful.spawn("kitty zellij a") end,
+  },
+  awful.key {
     modifiers   = { mod.super },
     key         = 'r',
     description = 'run prompt',
