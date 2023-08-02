@@ -51,6 +51,13 @@ client.connect_signal('request::default_keybindings', function()
     },
     awful.key {
       modifiers   = { mod.super },
+      key         = 'p',
+      description = 'toggle sticky',
+      group       = 'client',
+      on_press    = function(c) c.sticky = not c.sticky end,
+    },
+    awful.key {
+      modifiers   = { mod.super },
       key         = 'n',
       description = 'minimize',
       group       = 'client',
@@ -84,6 +91,60 @@ client.connect_signal('request::default_keybindings', function()
       on_press    = function(c)
         c.maximized_horizontal = not c.maximized_horizontal
         c:raise()
+      end,
+    },
+    awful.key {
+      modifiers   = { mod.super, mod.shift },
+      key         = "Next",
+      description = "reduce client size",
+      group       = 'client',
+      on_press    = function(c)
+        c:relative_move(20, 20, -40, -40)
+      end,
+    },
+    awful.key {
+      modifiers   = { mod.super, mod.shift },
+      key         = "Prior",
+      description = "increase client size",
+      group       = 'client',
+      on_press    = function(c)
+        c:relative_move(-20, -20, 40, 40)
+      end,
+    },
+    awful.key {
+      modifiers   = { mod.super, mod.shift },
+      key         = "Down",
+      description = "move client down",
+      group       = 'client',
+      on_press    = function(c)
+        c:relative_move(0, 20, 0, 0)
+      end,
+    },
+    awful.key {
+      modifiers   = { mod.super, mod.shift },
+      key         = "Up",
+      description = "move client up",
+      group       = 'client',
+      on_press    = function(c)
+        c:relative_move(0, -20, 0, 0)
+      end,
+    },
+    awful.key {
+      modifiers   = { mod.super, mod.shift },
+      key         = "Left",
+      description = "move client to the left",
+      group       = 'client',
+      on_press    = function(c)
+        c:relative_move(-20, 0, 0, 0)
+      end,
+    },
+    awful.key {
+      modifiers   = { mod.super, mod.shift },
+      key         = "Right",
+      description = "move client to the right",
+      group       = 'client',
+      on_press    = function(c)
+        c:relative_move(20, 0, 0, 0)
       end,
     },
   }
