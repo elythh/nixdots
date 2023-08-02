@@ -12,7 +12,7 @@ awesome-git zsh pamixer imagemagick ncmpcpp mpd mpDris2 brightnessctl inotifywai
 
 2. If you are using my nixos config, then my config should be already installed, otherwise
 ```bash
-~ $ git clone --depth 1 --branch the-awesome-config https://github.com/chadcat5207/fuyu ~/.config/awesome
+~ $ git clone --depth 1 --branch awesome https://github.com/elythh/dotfiles ~/.config/awesome
 ```
 
 3. Make a secrets file at `config/keys.lua`
