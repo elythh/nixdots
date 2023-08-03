@@ -21,7 +21,7 @@ local elems = wibox.widget {
 }
 
 local setWall = function(path)
-  gears.wallpaper.maximized(curr, s, beautiful.mbg)
+  gears.wallpaper.maximized(curr, awful.screen.focused(), beautiful.mbg)
   awful.spawn.with_shell('setWall ' .. path .. " " .. beautiful.name)
 end
 
