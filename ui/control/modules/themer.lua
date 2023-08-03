@@ -35,6 +35,7 @@ local themes      = {
   'groove',
   'onedark',
   'verdant',
+  'mountain',
   'arctic'
 }
 
