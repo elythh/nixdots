@@ -144,7 +144,7 @@ local slide = animation:new({
   pos = 0 - wallswitcher.height,
   easing = animation.easing.inOutExpo,
   update = function(_, pos)
-    wallswitcher.y = s.geometry.y + pos
+    wallswitcher.y = awful.screen.focused().geometry.y + pos
   end,
 })
 
