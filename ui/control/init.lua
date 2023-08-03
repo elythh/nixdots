@@ -42,7 +42,7 @@ local slide = animation:new({
   pos = 0 - control.height,
   easing = animation.easing.inOutExpo,
   update = function(_, pos)
-    control.y = s.geometry.y + pos
+    control.y = awful.screen.focused().geometry.y + pos
   end,
 })
 
