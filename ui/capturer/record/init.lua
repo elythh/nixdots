@@ -69,90 +69,93 @@ local createButton = function(icon, name, fn, col)
 end
 
 
-awful.screen.connect_for_each_screen(function(s)
-  local recorder = wibox {
-    width = dpi(270),
-    height = dpi(180),
-    shape = helpers.rrect(8),
-    bg = beautiful.bg,
-    ontop = true,
-    visible = false
-  }
-  local slide = animation:new({
-    duration = 0.6,
-    pos = 0 - recorder.height,
-    easing = animation.easing.inOutExpo,
-    update = function(_, pos)
-      recorder.y = s.geometry.y + pos
-    end,
-  })
+local recorder = wibox {
+  width = dpi(270),
+  height = dpi(180),
+  shape = helpers.rrect(8),
+  bg = beautiful.bg,
+  ontop = true,
+  visible = false
+}
+local slide = animation:new({
+  duration = 0.6,
+  pos = 0 - recorder.height,
+  easing = animation.easing.inOutExpo,
+  update = function(_, pos)
+    recorder.y = s.geometry.y + pos
+  end,
+})
 
-  local slide_end = gears.timer({
-    single_shot = true,
-    timeout = 0.43,
-    callback = function()
-      recorder.visible = false
-    end,
-  })
+local slide_end = gears.timer({
+  single_shot = true,
+  timeout = 0.43,
+  callback = function()
+    recorder.visible = false
+  end,
+})
 
-  local close = function()
-    slide_end:again()
-    slide:set(0 - recorder.height)
-  end
+local close = function()
+  slide_end:again()
+  slide:set(0 - recorder.height)
+end
 
-  local fullscreen = createButton('󰄄', 'Start', function()
-    close()
-    local name = getName()
-    start('60', name)
-  end, beautiful.ok)
+local fullscreen = createButton('󰄄', 'Start', function()
+  close()
+  local name = getName()
+  start('60', name)
+end, beautiful.ok)
 
 
-  local window = createButton('󰜺', 'Finish', function()
-    close()
-    awful.spawn.with_shell("killall ffmpeg")
-  end, beautiful.err)
+local window = createButton('󰜺', 'Finish', function()
+  close()
+  awful.spawn.with_shell("killall ffmpeg")
+end, beautiful.err)
 
-  recorder:setup {
+recorder:setup {
+  {
     {
       {
         {
           {
-            {
-              font = beautiful.font .. " Light 12",
-              markup = "Video Recorder",
-              valign = "center",
-              align = "start",
-              widget = wibox.widget.textbox,
-            },
-            widget = wibox.layout.align.horizontal
+            font = beautiful.font .. " Light 12",
+            markup = "Video Recorder",
+            valign = "center",
+            align = "start",
+            widget = wibox.widget.textbox,
           },
-          widget = wibox.container.margin,
-          margins = 10
+          widget = wibox.layout.align.horizontal
         },
-        widget = wibox.container.background,
-        bg = beautiful.mbg
+        widget = wibox.container.margin,
+        margins = 10
       },
-      {
-        fullscreen,
-        window,
-        spacing = 15,
-        layout = wibox.layout.fixed.horizontal
-      },
-      spacing = 10,
-      layout = wibox.layout.fixed.vertical,
+      widget = wibox.container.background,
+      bg = beautiful.mbg
     },
-    widget = wibox.container.margin,
-    margins = 13,
-  }
+    {
+      fullscreen,
+      window,
+      spacing = 15,
+      layout = wibox.layout.fixed.horizontal
+    },
+    spacing = 10,
+    layout = wibox.layout.fixed.vertical,
+  },
+  widget = wibox.container.margin,
+  margins = 13,
+}
 
-  awesome.connect_signal("toggle::recorder", function()
-    if recorder.visible then
-      slide_end:again()
-      slide:set(0 - recorder.height)
-    elseif not recorder.visible then
-      slide:set(beautiful.scrheight / 2 - recorder.height / 2)
-      recorder.visible = true
-    end
-    awful.placement.centered(recorder)
-  end)
+awesome.connect_signal("toggle::recorder", function()
+  if recorder.visible then
+    slide_end:again()
+    slide:set(0 - recorder.height)
+  elseif not recorder.visible then
+    slide:set(beautiful.scrheight / 2 - recorder.height / 2)
+    recorder.visible = true
+  end
+  awful.placement.centered(
+    recorder,
+    {
+      parent = awful.screen.focused()
+    }
+  )
 end)

@@ -10,57 +10,55 @@ local calendar = require("ui.moment.modules.calendar")()
 local weather = require("ui.moment.modules.weather")
 local title = require("ui.moment.modules.title")
 
-awful.screen.connect_for_each_screen(function(s)
-  local moment = wibox({
-    type = "dock",
-    screen = s,
-    width = dpi(410),
-    shape = helpers.rrect(8),
-    height = dpi(830),
-    bg = beautiful.bg,
-    ontop = true,
-    visible = false
-  })
+local moment = wibox({
+  type = "dock",
+  screen = s,
+  width = dpi(410),
+  shape = helpers.rrect(8),
+  height = dpi(830),
+  bg = beautiful.bg,
+  ontop = true,
+  visible = false
+})
 
-  local slide = animation:new({
-    duration = 0.6,
-    pos = 0 - moment.height,
-    easing = animation.easing.inOutExpo,
-    update = function(_, pos)
-      moment.y = s.geometry.y + pos
-    end,
-  })
+local slide = animation:new({
+  duration = 0.6,
+  pos = 0 - moment.height,
+  easing = animation.easing.inOutExpo,
+  update = function(_, pos)
+    moment.y = s.geometry.y + pos
+  end,
+})
 
-  local slide_end = gears.timer({
-    single_shot = true,
-    timeout = 0.43 + 0.08,
-    callback = function()
-      moment.visible = false
-    end,
-  })
-  moment:setup {
-    title,
+local slide_end = gears.timer({
+  single_shot = true,
+  timeout = 0.43 + 0.08,
+  callback = function()
+    moment.visible = false
+  end,
+})
+moment:setup {
+  title,
+  {
     {
-      {
-        calendar,
-        weather,
-        spacing = 12,
-        layout = wibox.layout.fixed.vertical,
-      },
-      margins = dpi(12),
-      widget = wibox.container.margin,
+      calendar,
+      weather,
+      spacing = 12,
+      layout = wibox.layout.fixed.vertical,
     },
-    layout = wibox.layout.fixed.vertical,
-    spacing = 2,
-  }
-  awful.placement.bottom_right(moment, { honor_workarea = true, margins = beautiful.useless_gap * 2 })
-  awesome.connect_signal("toggle::moment", function()
-    if moment.visible then
-      slide_end:again()
-      slide:set(0 - moment.height)
-    elseif not moment.visible then
-      slide:set(beautiful.barSize + beautiful.useless_gap)
-      moment.visible = true
-    end
-  end)
+    margins = dpi(12),
+    widget = wibox.container.margin,
+  },
+  layout = wibox.layout.fixed.vertical,
+  spacing = 2,
+}
+awful.placement.top_right(moment, { honor_workarea = true, margins = beautiful.useless_gap * 2 })
+awesome.connect_signal("toggle::moment", function()
+  if moment.visible then
+    slide_end:again()
+    slide:set(0 - moment.height)
+  elseif not moment.visible then
+    slide:set(beautiful.barSize + beautiful.useless_gap)
+    moment.visible = true
+  end
 end)

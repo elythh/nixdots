@@ -74,122 +74,125 @@ local createButton = function(icon, name, fn, col)
 end
 
 
-awful.screen.connect_for_each_screen(function(s)
-  local scrotter = wibox {
-    width = dpi(410),
-    height = dpi(180),
-    shape = helpers.rrect(8),
-    bg = beautiful.bg,
-    ontop = true,
-    visible = false
-  }
-  local slide = animation:new({
-    duration = 0.6,
-    pos = 0 - scrotter.height,
-    easing = animation.easing.inOutExpo,
-    update = function(_, pos)
-      scrotter.y = s.geometry.y + pos
-    end,
-  })
+local scrotter = wibox {
+  width = dpi(410),
+  height = dpi(180),
+  shape = helpers.rrect(8),
+  bg = beautiful.bg,
+  ontop = true,
+  visible = false
+}
+local slide = animation:new({
+  duration = 0.6,
+  pos = 0 - scrotter.height,
+  easing = animation.easing.inOutExpo,
+  update = function(_, pos)
+    scrotter.y = s.geometry.y + pos
+  end,
+})
 
-  local slide_end = gears.timer({
-    single_shot = true,
-    timeout = 0.43,
-    callback = function()
-      scrotter.visible = false
-    end,
-  })
+local slide_end = gears.timer({
+  single_shot = true,
+  timeout = 0.43,
+  callback = function()
+    scrotter.visible = false
+  end,
+})
 
-  local close = function()
-    slide_end:again()
-    slide:set(0 - scrotter.height)
-  end
+local close = function()
+  slide_end:again()
+  slide:set(0 - scrotter.height)
+end
 
-  local fullscreen = createButton('', 'Fullscreen', function()
-    close()
-    local name = getName()
-    local cmd = defCommand .. name
-    awful.spawn.easy_async_with_shell(cmd, function()
-      copyScrot(name)
-    end)
-  end, beautiful.ok)
+local fullscreen = createButton('', 'Fullscreen', function()
+  close()
+  local name = getName()
+  local cmd = defCommand .. name
+  awful.spawn.easy_async_with_shell(cmd, function()
+    copyScrot(name)
+  end)
+end, beautiful.ok)
 
-  local selection = createButton('', 'Selection', function()
-    close()
-    local name = getName()
-    local cmd = defCommand .. " -s " .. name
-    awful.spawn.easy_async_with_shell(cmd, function()
-      copyScrot(name)
-    end)
-  end, beautiful.pri)
+local selection = createButton('', 'Selection', function()
+  close()
+  local name = getName()
+  local cmd = defCommand .. " -s " .. name
+  awful.spawn.easy_async_with_shell(cmd, function()
+    copyScrot(name)
+  end)
+end, beautiful.pri)
 
-  local window = createButton('', 'Window', function()
-    close()
-    local name = getName()
-    local cmd = defCommand .. " -i " .. client.focus.window .. " " .. name
-    awful.spawn.with_shell(cmd)
-    awful.spawn.easy_async_with_shell(cmd, function()
-      copyScrot(name)
-    end)
-  end, beautiful.err)
+local window = createButton('', 'Window', function()
+  close()
+  local name = getName()
+  local cmd = defCommand .. " -i " .. client.focus.window .. " " .. name
+  awful.spawn.with_shell(cmd)
+  awful.spawn.easy_async_with_shell(cmd, function()
+    copyScrot(name)
+  end)
+end, beautiful.err)
 
-  scrotter:setup {
+scrotter:setup {
+  {
     {
       {
         {
           {
-            {
-              font = beautiful.font .. " Light 12",
-              markup = "Screenshotter",
-              valign = "center",
-              align = "start",
-              widget = wibox.widget.textbox,
-            },
-            nil,
-            {
-              id = '123',
-              font = beautiful.icofont .. " 16",
-              markup = useMouse and helpers.colorizeText("󰇀", beautiful.pri) or
-                  helpers.colorizeText("󰇀", beautiful.fg),
-              valign = "center",
-              align = "start",
-              widget = wibox.widget.textbox,
-              buttons = awful.button({}, 1, function()
-                useMouse = not useMouse
-                scrotter:get_children_by_id('123')[1].markup = useMouse and helpers.colorizeText("󰇀", beautiful.pri) or
-                    helpers.colorizeText("󰇀", beautiful.fg)
-              end),
-            },
-            widget = wibox.layout.align.horizontal
+            font = beautiful.font .. " Light 12",
+            markup = "Screenshotter",
+            valign = "center",
+            align = "start",
+            widget = wibox.widget.textbox,
           },
-          widget = wibox.container.margin,
-          margins = 10
+          nil,
+          {
+            id = '123',
+            font = beautiful.icofont .. " 16",
+            markup = useMouse and helpers.colorizeText("󰇀", beautiful.pri) or
+                helpers.colorizeText("󰇀", beautiful.fg),
+            valign = "center",
+            align = "start",
+            widget = wibox.widget.textbox,
+            buttons = awful.button({}, 1, function()
+              useMouse = not useMouse
+              scrotter:get_children_by_id('123')[1].markup = useMouse and helpers.colorizeText("󰇀", beautiful.pri) or
+                  helpers.colorizeText("󰇀", beautiful.fg)
+            end),
+          },
+          widget = wibox.layout.align.horizontal
         },
-        widget = wibox.container.background,
-        bg = beautiful.mbg
+        widget = wibox.container.margin,
+        margins = 10
       },
-      {
-        fullscreen,
-        selection,
-        window,
-        spacing = 15,
-        layout = wibox.layout.fixed.horizontal
-      },
-      spacing = 10,
-      layout = wibox.layout.fixed.vertical,
+      widget = wibox.container.background,
+      bg = beautiful.mbg
     },
-    widget = wibox.container.margin,
-    margins = 10,
-  }
+    {
+      fullscreen,
+      selection,
+      window,
+      spacing = 15,
+      layout = wibox.layout.fixed.horizontal
+    },
+    spacing = 10,
+    layout = wibox.layout.fixed.vertical,
+  },
+  widget = wibox.container.margin,
+  margins = 10,
+}
 
-  awesome.connect_signal("toggle::scrotter", function()
-    if scrotter.visible then
-      slide_end:again()
-      slide:set(0 - scrotter.height)
-    elseif not scrotter.visible then
-      slide:set(beautiful.scrheight / 2 - scrotter.height / 2)
-      scrotter.visible = true
-    end
-    awful.placement.centered(scrotter)
-  end)
+awesome.connect_signal("toggle::scrotter", function()
+  if scrotter.visible then
+    slide_end:again()
+    slide:set(0 - scrotter.height)
+  elseif not scrotter.visible then
+    slide:set(beautiful.scrheight / 2 - scrotter.height / 2)
+    scrotter.visible = true
+  end
+  awful.placement.centered(
+    scrotter,
+    {
+      parent = awful.screen.focused()
+    }
+  )
 end)

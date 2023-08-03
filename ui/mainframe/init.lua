@@ -18,177 +18,175 @@ local quik = require("ui.mainframe.modules.quiklinks")
 local quikl = require("ui.mainframe.modules.quiklocations")
 local quote = require("ui.mainframe.modules.quote")
 
-awful.screen.connect_for_each_screen(function(s)
-  local mainframe = wibox({
-    screen = s,
-    width = 1000,
-    shape = helpers.rrect(8),
-    height = 800,
-    bg = beautiful.bg,
-    ontop = true,
-    visible = false,
-  })
-  local main = wibox.widget {
+local mainframe = wibox({
+  screen = awful.screen.focused(),
+  width = 1000,
+  shape = helpers.rrect(8),
+  height = 800,
+  bg = beautiful.bg,
+  ontop = true,
+  visible = false,
+})
+local main = wibox.widget {
+  {
+    profile,
     {
-      profile,
-      {
-        taw,
-        stats,
-        spacing = 16,
-        layout = wibox.layout.fixed.horizontal,
-      },
-      music,
-      spacing = 20,
-      layout = wibox.layout.fixed.vertical,
-    },
-    notifbox,
-    spacing = 20,
-    visible = true,
-    layout = wibox.layout.fixed.horizontal,
-  }
-  local set = wibox.widget {
-    {
-      timer,
-      todo,
-      quik,
-      spacing = 20,
+      taw,
+      stats,
+      spacing = 16,
       layout = wibox.layout.fixed.horizontal,
     },
-    {
-      quikl,
-      quote,
-      spacing = 20,
-      layout = wibox.layout.fixed.horizontal,
-    },
+    music,
     spacing = 20,
-    visible = false,
     layout = wibox.layout.fixed.vertical,
-  }
-  local but = wibox.widget {
+  },
+  notifbox,
+  spacing = 20,
+  visible = true,
+  layout = wibox.layout.fixed.horizontal,
+}
+local set = wibox.widget {
+  {
+    timer,
+    todo,
+    quik,
+    spacing = 20,
+    layout = wibox.layout.fixed.horizontal,
+  },
+  {
+    quikl,
+    quote,
+    spacing = 20,
+    layout = wibox.layout.fixed.horizontal,
+  },
+  spacing = 20,
+  visible = false,
+  layout = wibox.layout.fixed.vertical,
+}
+local but = wibox.widget {
+  {
     {
       {
         {
-          {
-            id = "mainText",
-            font = beautiful.font .. " 14",
-            markup = "Dashboard",
-            valign = "center",
-            align = "center",
-            widget = wibox.widget.textbox,
-          },
-          widget = wibox.container.margin,
-          margins = {
-            top = 8,
-            left = 10,
-            right = 10,
-            bottom = 8
-          }
+          id = "mainText",
+          font = beautiful.font .. " 14",
+          markup = "Dashboard",
+          valign = "center",
+          align = "center",
+          widget = wibox.widget.textbox,
         },
-        id = "mainBack",
-        bg = beautiful.mbg,
-        widget = wibox.container.background,
-        buttons = {
-          awful.button({}, 1, function()
-            awesome.emit_signal('toggle::dashboardMain')
-          end)
-        },
+        widget = wibox.container.margin,
+        margins = {
+          top = 8,
+          left = 10,
+          right = 10,
+          bottom = 8
+        }
       },
-      {
-        {
-          {
-            id = "settingsText",
-            font = beautiful.font .. " 14",
-            markup = "Get Work Done",
-            valign = "center",
-            align = "center",
-            widget = wibox.widget.textbox,
-          },
-          widget = wibox.container.margin,
-          margins = {
-            top = 8,
-            left = 10,
-            right = 10,
-            bottom = 8
-          }
-        },
-        id = "settingsBack",
-        widget = wibox.container.background,
-        buttons = {
-          awful.button({}, 1, function()
-            awesome.emit_signal('toggle::dashboardSet')
-          end)
-        },
+      id = "mainBack",
+      bg = beautiful.mbg,
+      widget = wibox.container.background,
+      buttons = {
+        awful.button({}, 1, function()
+          awesome.emit_signal('toggle::dashboardMain')
+        end)
       },
-      layout = wibox.layout.fixed.horizontal,
-      spacing = 20
     },
-    widget = wibox.container.place,
-    halign = 'center',
-  }
-  mainframe:setup {
     {
       {
-        nil,
-        search,
         {
-          but,
-          widget = wibox.container.margin,
-          margins = { left = 20, }
+          id = "settingsText",
+          font = beautiful.font .. " 14",
+          markup = "Get Work Done",
+          valign = "center",
+          align = "center",
+          widget = wibox.widget.textbox,
         },
-        layout = wibox.layout.align.horizontal
+        widget = wibox.container.margin,
+        margins = {
+          top = 8,
+          left = 10,
+          right = 10,
+          bottom = 8
+        }
       },
-      {
-        main,
-        set,
-        layout = wibox.layout.stack
+      id = "settingsBack",
+      widget = wibox.container.background,
+      buttons = {
+        awful.button({}, 1, function()
+          awesome.emit_signal('toggle::dashboardSet')
+        end)
       },
-      layout = wibox.layout.fixed.vertical,
-      spacing = 20,
     },
-    margins = dpi(25),
-    widget = wibox.container.margin,
-  }
+    layout = wibox.layout.fixed.horizontal,
+    spacing = 20
+  },
+  widget = wibox.container.place,
+  halign = 'center',
+}
+mainframe:setup {
+  {
+    {
+      nil,
+      search,
+      {
+        but,
+        widget = wibox.container.margin,
+        margins = { left = 20, }
+      },
+      layout = wibox.layout.align.horizontal
+    },
+    {
+      main,
+      set,
+      layout = wibox.layout.stack
+    },
+    layout = wibox.layout.fixed.vertical,
+    spacing = 20,
+  },
+  margins = dpi(25),
+  widget = wibox.container.margin,
+}
 
-  helpers.placeWidget(mainframe)
-  local slide = animation:new({
-    duration = 0.6,
-    pos = 0 - mainframe.height,
-    easing = animation.easing.inOutExpo,
-    update = function(_, pos)
-      mainframe.y = s.geometry.y + pos
-    end,
-  })
+helpers.placeWidget(mainframe)
+local slide = animation:new({
+  duration = 0.6,
+  pos = 0 - mainframe.height,
+  easing = animation.easing.inOutExpo,
+  update = function(_, pos)
+    mainframe.y = awful.screen.focused().geometry.y + pos
+  end,
+})
 
-  local slide_end = gears.timer({
-    single_shot = true,
-    timeout = 0.43 + 0.08,
-    callback = function()
-      mainframe.visible = false
-    end,
-  })
-  awesome.connect_signal("toggle::dashboardMain", function()
-    main.visible = true
-    but:get_children_by_id('mainBack')[1].bg = beautiful.mbg
-    but:get_children_by_id('settingsBack')[1].bg = beautiful.bg
-    set.visible = false
-  end)
-  awesome.connect_signal("toggle::dashboardSet", function()
-    main.visible = false
-    but:get_children_by_id('settingsBack')[1].bg = beautiful.mbg
-    but:get_children_by_id('mainBack')[1].bg = beautiful.bg
-    set.visible = true
-  end)
-  awesome.connect_signal("toggle::dashboard", function()
-    local pad = 0
-    if beautiful.barShouldHaveGaps then
-      pad = beautiful.barPadding
-    end
-    if mainframe.visible then
-      slide_end:again()
-      slide:set(0 - mainframe.height)
-    elseif not mainframe.visible then
-      slide:set(beautiful.barSize + beautiful.useless_gap + math.ceil(pad / 2))
-      mainframe.visible = true
-    end
-  end)
+local slide_end = gears.timer({
+  single_shot = true,
+  timeout = 0.43 + 0.08,
+  callback = function()
+    mainframe.visible = false
+  end,
+})
+awesome.connect_signal("toggle::dashboardMain", function()
+  main.visible = true
+  but:get_children_by_id('mainBack')[1].bg = beautiful.mbg
+  but:get_children_by_id('settingsBack')[1].bg = beautiful.bg
+  set.visible = false
+end)
+awesome.connect_signal("toggle::dashboardSet", function()
+  main.visible = false
+  but:get_children_by_id('settingsBack')[1].bg = beautiful.mbg
+  but:get_children_by_id('mainBack')[1].bg = beautiful.bg
+  set.visible = true
+end)
+awesome.connect_signal("toggle::dashboard", function()
+  local pad = 0
+  if beautiful.barShouldHaveGaps then
+    pad = beautiful.barPadding
+  end
+  if mainframe.visible then
+    slide_end:again()
+    slide:set(0 - mainframe.height)
+  elseif not mainframe.visible then
+    slide:set(beautiful.barSize + beautiful.useless_gap + math.ceil(pad / 2))
+    mainframe.visible = true
+  end
 end)
