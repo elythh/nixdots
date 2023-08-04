@@ -4,7 +4,6 @@ require 'awful.hotkeys_popup.keys'
 local menubar = require 'menubar'
 local apps = require 'config.apps'
 local mod = require 'main.bindings.mod'
-local widgets = require 'config.menu'
 local audiodaemon = require 'daemons.audio'
 menubar.utils.terminal = apps.terminal
 
@@ -80,7 +79,7 @@ awful.keyboard.append_global_keybindings {
     key         = 'Return',
     description = 'open a terminal with Zellij active session',
     group       = 'launcher',
-    on_press    = function() awful.spawn(apps.terminal .. "-e zellij a") end,
+    on_press    = function() awful.spawn(apps.terminal .. " -e zellij a") end,
   },
   awful.key {
     modifiers   = { mod.super },

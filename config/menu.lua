@@ -1,7 +1,6 @@
 local _M = {}
 local awful = require("awful")
 local beautiful = require("beautiful")
-local apps = require 'config.apps'
 local gcolor = require('gears.color')
 local wibox = require("wibox")
 local gfilesystem = require('gears.filesystem')
