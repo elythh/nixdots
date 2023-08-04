@@ -28,7 +28,7 @@ local icon_map = {
 }
 
 local api_key = require("config.keys").openweatherapi
-local coordinates = { "28.6446772", "77.320955" }
+local coordinates = require("config.keys").coordinates
 
 local show_hourly_forecast = true
 local show_daily_forecast = true
