@@ -1,6 +1,6 @@
 local _M = {
   terminal = os.getenv('TERMINAL') or 'wezterm',
-  editor   = os.getenv('EDITOR') or 'nano',
+  editor   = os.getenv('EDITOR') or 'nvim',
 }
 
 _M.editor_cmd = _M.terminal .. ' -e ' .. _M.editor
