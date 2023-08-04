@@ -27,7 +27,8 @@ zinit light-mode for \
   zdharma-continuum/fast-syntax-highlighting \
   MichaelAquilina/zsh-you-should-use \
   zsh-users/zsh-autosuggestions \
-  Aloxaf/fzf-tab
+  Aloxaf/fzf-tab \
+  agkozak/zsh-z
 
 zinit ice wait'3' lucid
 zinit light zsh-users/zsh-history-substring-search
