@@ -36,7 +36,7 @@ SAVEHIST=10000
 ZSH_AUTOSUGGEST_USE_ASYNC="true"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor regexp root line)
 ZSH_HIGHLIGHT_MAXLENGTH=512
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$color8,bold"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=$mbg,bold"
 
 while read -r opt
 do 

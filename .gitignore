@@ -1,4 +1,5 @@
 .zhistory
 .zshrc
 .zshenv
+.zcompdump
 env.zsh
