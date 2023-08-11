@@ -215,6 +215,7 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 alias kns='kubens'
 alias kcx='kubectx'
 # quelques alias communs kube
+alias kubectl="kubecolor"
 alias k='kubectl'
 alias kg='kubectl get'
 alias kd='kubectl describe'
