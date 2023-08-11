@@ -28,7 +28,8 @@ zinit light-mode for \
   MichaelAquilina/zsh-you-should-use \
   zsh-users/zsh-autosuggestions \
   Aloxaf/fzf-tab \
-  agkozak/zsh-z
+  agkozak/zsh-z \
+  kubermatic/fubectl
 
 zinit ice wait'3' lucid
 zinit light zsh-users/zsh-history-substring-search
