@@ -211,6 +211,7 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 
 # vim:ft=zsh
 
+alias k9s='k9s --readonly'
 # kubens et kubectx
 alias kns='kubens'
 alias kcx='kubectx'
