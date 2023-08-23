@@ -91,9 +91,16 @@ awful.keyboard.append_global_keybindings {
   awful.key {
     modifiers   = { mod.super },
     key         = 'a',
-    description = 'show the menubar',
+    description = 'show the menu bar',
     group       = 'launcher',
     on_press    = function() awesome.emit_signal('toggle::launcher') end,
+  },
+  awful.key {
+    modifiers   = { mod.super, mod.shift },
+    key         = 'a',
+    description = 'show the pass selector',
+    group       = 'launcher',
+    on_press    = function() awful.spawn("rofi-pass") end,
   },
 }
 

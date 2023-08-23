@@ -137,9 +137,9 @@ function Scratchpad.mt:__call(...)
 end
 
 local mod = require 'main.bindings.mod'
-local createScratch = function(command, width, height, k)
+local createScratchTerm = function(command, width, height, k)
   local scratch = Scratchpad:new {
-    command = 'kitty' .. ' --class "' .. command .. 'pad" -e sh -c "' .. command .. '; $SHELL"',
+    command = 'wezterm start  --class "' .. command .. 'pad" -e sh -c "' .. command .. '; $SHELL"',
     rule = { class = command .. 'pad' },
     height = height,
     width = width,
@@ -148,7 +148,7 @@ local createScratch = function(command, width, height, k)
     awful.key {
       modifiers   = { mod.super },
       key         = k,
-      description = 'show help',
+      description = 'show ' .. command,
       group       = 'awesome',
       on_press    = function() scratch:toggle() end,
     },
@@ -159,5 +159,24 @@ local createScratch = function(command, width, height, k)
   return scratch
 end
 
-local default = createScratch("neofetch", 1000, 650, 'v')
-local ncmpcpp = createScratch("ncmpcpp", 850, 550, 'z')
+local default = createScratchTerm("neofetch", 1000, 650, 'v')
+local ncmpcpp = createScratchTerm("ncmpcpp", 850, 550, 'z')
+
+local scratch = Scratchpad:new {
+  command = 'wezterm start  --class "lspad" -e sh -c "ls; $SHELL"',
+  rule = { class = 'lspad' },
+  height = 650,
+  width = 1000,
+}
+awful.keyboard.append_global_keybindings {
+  awful.key {
+    modifiers   = { mod.super },
+    key         = "o",
+    description = 'open ls',
+    group       = 'awesome',
+    on_press    = function() scratch:toggle() end,
+  },
+}
+awesome.connect_signal("toggle:: lspad", function()
+  scratch:toggle()
+end)
