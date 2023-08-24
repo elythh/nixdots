@@ -5,6 +5,7 @@ local menubar = require 'menubar'
 local apps = require 'config.apps'
 local mod = require 'main.bindings.mod'
 local audiodaemon = require 'daemons.audio'
+local bling = require 'modules.bling'
 menubar.utils.terminal = apps.terminal
 
 -- general awesome keys
@@ -180,6 +181,32 @@ awful.keyboard.append_global_keybindings {
 
 -- layout related keybindings
 awful.keyboard.append_global_keybindings {
+  --- Add client to tabbed layout
+  awful.key {
+    modifiers   = { mod.alt },
+    key         = "a",
+    description = "pick client to add to tab group",
+    on_press    = function() bling.module.tabbed.pick_with_dmenu() end,
+    group       = "tabs",
+  },
+
+  --- Remove client from tabbed layout
+  awful.key {
+    modifiers = { mod.alt },
+    key = "d",
+    on_press = function() bling.module.tabbed.pop() end,
+    description = "remove focused client from tabbing group", group = "tabs"
+  },
+
+  --- Cycle through client in tabbed layout
+  awful.key {
+    modifiers   = { mod.alt },
+    key         = "s",
+    on_press    = function() bling.module.tabbed.iter() end,
+    description = "iterate through tabbing group",
+    group       = "tabs"
+  },
+
   awful.key {
     modifiers   = { mod.super, mod.shift },
     key         = 'j',
