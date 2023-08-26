@@ -149,7 +149,7 @@ theme.hotkeys_border_width                      = dpi(2)
 theme.hotkeys_border_color                      = theme.pri
 theme.hotkeys_group_margin                      = 20
 
-theme.playerctl_ignore                          = { "firefox", "spotify" }
+theme.playerctl_ignore                          = { "chromium", "firefox" }
 theme.playerctl_player                          = { "mpd", "%any" }
 theme.playerctl_update_on_activity              = false
 theme.playerctl_position_update_interval        = 1
