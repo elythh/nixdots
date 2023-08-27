@@ -36,6 +36,7 @@ local themes      = {
   'onedark',
   'verdant',
   'mountain',
+  'rose',
   'arctic'
 }
 
