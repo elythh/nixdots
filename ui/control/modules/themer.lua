@@ -37,6 +37,7 @@ local themes      = {
   'verdant',
   'mountain',
   'rose',
+  'tokyo',
   'arctic'
 }
 

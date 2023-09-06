@@ -81,7 +81,7 @@ local makeImage       = function()
     os.execute("mkdir -p ~/.cache/awesome/menu/")
     local cmd = 'convert ' ..
         beautiful.wall ..
-        ' -resize 1920x1080 +repage -crop 380x570+600+310 -modulate 52 ~/.cache/awesome/menu/' ..
+        ' -resize 1920x1080 +repage -crop 380x570+600+310 ~/.cache/awesome/menu/' ..
         require('theme.colors')
         .ow
     awful.spawn.easy_async_with_shell(cmd, function()
@@ -105,7 +105,7 @@ launcherdisplay:setup {
         type = "linear",
         from = { 0, 0 },
         to = { 0, 500 },
-        stops = { { 0.2, beautiful.bg .. "22" }, { 1, beautiful.mbg } }
+        stops = { { 0.2, beautiful.bg .. "cc" }, { 1, beautiful.mbg } }
       },
       widget = wibox.container.background,
     },
