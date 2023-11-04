@@ -15,6 +15,10 @@ awful.keyboard.append_global_keybindings({
     { description = "quit awesome", group = "awesome" }),
   awful.key({ modkey, }, "Return", function() awful.spawn(apps.terminal) end,
     { description = "open a terminal", group = "launcher" }),
+  awful.key({ modkey, "Shift" }, "d", function() awful.spawn("rofi-pass") end,
+    { description = "open a rofi-pass", group = "apps" }),
+  awful.key({ modkey, "Control" }, "s", function() awful.spawn.with_shell("screenshot") end,
+    { description = "open screenshot menu", group = "apps" }),
 })
 
 -- Tag bindings

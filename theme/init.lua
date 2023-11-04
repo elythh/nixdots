@@ -1,31 +1,27 @@
-local xresources    = require "beautiful.xresources"
-local rnotification = require "ruled.notification"
-local dpi           = xresources.apply_dpi
-local gears         = require "gears"
-local gfs           = require "gears.filesystem"
-local helpers       = require "helpers"
+local xresources     = require "beautiful.xresources"
+local rnotification  = require "ruled.notification"
+local dpi            = xresources.apply_dpi
+local gears          = require "gears"
+local gfs            = require "gears.filesystem"
+local helpers        = require "helpers"
 
 -- Var
-local themes_path   = gfs.get_configuration_dir() .. "theme/"
-local walls_path    = "~/.local/pictures/Walls/"
-local home          = os.getenv 'HOME'
+local themes_path    = gfs.get_configuration_dir() .. "theme/"
+local walls_path     = "~/.local/pictures/Walls/"
+local home           = os.getenv 'HOME'
 
-local theme         = {}
-
-
-
+local theme          = {}
 
 ----- User Preferences -----
-
-theme.wallpaper      = themes_path .. "assets/mountain.jpg"
-
 theme.pfp            = themes_path .. "assets/pfp.png"
 theme.user           = string.gsub(os.getenv('USER'), '^%l', string.upper)
 theme.hostname       = os.getenv('HOST')
+
 ----- Font -----
-local themeName      = helpers.readFile("/home/gwen/.config/awesome/color"):gsub("%s+", "")
+local themeName      = helpers.readFile(gfs.get_configuration_dir() .. "color"):gsub("%s+", "")
 local colors         = require("theme.colors." .. themeName)
 
+theme.wallpaper      = themes_path .. "walls/" .. colors.name .. ".jpg"
 theme.sans           = "Rubik"
 theme.mono           = "Iosevka Nerd Font"
 theme.icon           = "Material Design Icons"
@@ -78,7 +74,7 @@ theme.menu_fg_focus  = theme.fg_normal
 theme.menu_fg_normal = theme.taglist_fg_empty
 theme.menu_bg_focus  = theme.bar_alt
 theme.menu_bg_normal = theme.bar
-theme.submenu        = "î¶…"
+theme.submenu        = ">"
 
 
 theme.taglist_bg           = theme.bg .. "00"

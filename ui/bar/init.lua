@@ -18,14 +18,13 @@ local systray     = require("ui.bar.mods.systray")
 local function init(s)
   local wibar = awful.wibar {
     position = "bottom",
-    height = 60,
+    height = 50,
     ontop = false,
     width = 1920,
     bg = beautiful.bg,
     fg = beautiful.fg1,
     screen = s,
     widget = {
-
       {
         {
           {

@@ -7,7 +7,7 @@ local beautiful = require("beautiful")
 
 local inspect = require("mods.inspect")
 local dpi = beautiful.xresources.apply_dpi
-local appicons = "/nix/store/3wpdmiaszdpga7sdax0xj37q7kjs6hqs-reversal/share/icons/reversal-dark/"
+local appicons = "/nix/store/8n15bqfh8n1lq289928fgpslcqxvwz7n-Reversal/share/icons/Reversal"
 
 local foldericons =
 "/nix/store/3wpdmiaszdpga7sdax0xj37q7kjs6hqs-reversal/share/icons/reversal-dark/places/48"

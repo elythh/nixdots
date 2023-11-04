@@ -78,7 +78,7 @@ end
 local function top(c)
   local titlebar = awful.titlebar(c, {
     position = 'top',
-    size = dpi(50),
+    size = dpi(40),
     bg = beautiful.transparent
   })
 

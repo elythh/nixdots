@@ -2,7 +2,7 @@ local gfs        = require("gears.filesystem")
 local gears      = require("gears")
 local theme_path = gfs.get_configuration_dir() .. "/theme/"
 local icon_cache = {}
-local t          = "/nix/store/3wpdmiaszdpga7sdax0xj37q7kjs6hqs-reversal/share/icons/reversal-dark"
+local t          = "/nix/store/8n15bqfh8n1lq289928fgpslcqxvwz7n-Reversal/share/icons/Reversal"
 
 
 local custom = {
