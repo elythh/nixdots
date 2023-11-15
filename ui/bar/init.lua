@@ -18,13 +18,14 @@ local systray     = require("ui.bar.mods.systray")
 local function init(s)
   local wibar = awful.wibar {
     position = "bottom",
-    height = 50,
+    height = 60,
     ontop = false,
     width = 1920,
     bg = beautiful.bg,
     fg = beautiful.fg1,
     screen = s,
     widget = {
+
       {
         {
           {
@@ -84,7 +85,12 @@ local function init(s)
               },
               widget = wibox.container.background,
               shape = helpers.rrect(5),
-              bg = beautiful.mbg
+              bg = beautiful.mbg,
+              buttons = {
+                awful.button({}, 1, function()
+                  awesome.emit_signal('toggle::control')
+                end)
+              },
             },
             hourminutes,
             layout = wibox.layout.fixed.horizontal,

@@ -20,7 +20,7 @@ ruled.client.connect_signal("request::rules", function()
       type = { "normal", "dialog" },
     },
     properties = {
-      titlebars_enabled = true
+      titlebars_enabled = false
     }
   }
   ruled.client.append_rule {
