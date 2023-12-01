@@ -1,1 +1,0 @@
-/nix/store/3sm2xsymfrpimy2i4zy7hv44dm50agn7-home-manager-files/.config/awesome/theme/colors.lua
