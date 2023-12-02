@@ -3,10 +3,8 @@
 ##
 alias s="kitty +kitten ssh"
 alias grub-update='sudo grub-mkconfig -o /boot/grub/grub.cfg'
-alias mirror-update='sudo reflector --verbose -c Indonesia -c Japan --sort rate --save /etc/pacman.d/mirrorlist'
 alias mtar='tar -zcvf' # mtar <archive_compress>
 alias utar='tar -zxvf' # utar <archive_decompress> <file_list>
-alias z='zip -r' # z <archive_compress> <file_list>
 alias uz='unzip' # uz <archive_decompress> -d <dir>
 alias sr='source ~/.zshrc'
 alias ..="cd .."
@@ -14,10 +12,6 @@ alias cfg='cd ~/.config/'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e" 
 alias mkdir="mkdir -p"
 alias fm='ranger'
-alias pacs="pacman -Slq | fzf -m --preview 'cat <(pacman -Si {1}) <(pacman -Fl {1} | awk \"{print \$2}\")' | xargs -ro sudo pacman -S"
-alias pars="paru -Slq | fzf -m --preview 'cat <(paru -Si {1}) <(paru -Fl {1} | awk \"{print \$2}\")' | xargs -ro  paru -S"
-alias pacr="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
-alias p="pacman -Q | fzf"
 alias wifi="nmtui-connect"
 alias ls="eza --color=auto --icons"
 alias l="ls -l"
@@ -212,6 +206,8 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 # vim:ft=zsh
 
 alias k9s='k9s --readonly'
+alias kx='f() { [ "$1" ] && kubectl config use-context $1 || kubectl config current-context ; } ; f'
+alias kn='f() { [ "$1" ] && kubectl config set-context --current --namespace $1 || kubectl config view --minify | grep namespace | cut -d" " -f6 ; } ; f'
 # kubens et kubectx
 alias kns='kubens'
 alias kcx='kubectx'
