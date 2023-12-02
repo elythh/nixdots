@@ -1,2 +1,2 @@
-require "misc.titlebar"
+--require "misc.titlebar"
 require "misc.music"
