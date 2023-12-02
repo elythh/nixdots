@@ -1,5 +1,5 @@
 local apps = {
-  terminal = "kitty",
+  terminal = "wezterm",
   launcher = "rofi -show drun",
   browser = "firefox",
   fileManager = "thunar",
