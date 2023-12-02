@@ -2,10 +2,10 @@ local gfs        = require("gears.filesystem")
 local gears      = require("gears")
 local theme_path = gfs.get_configuration_dir() .. "/theme/"
 local icon_cache = {}
-local t          = "/nix/store/3wpdmiaszdpga7sdax0xj37q7kjs6hqs-reversal/share/icons/reversal-dark"
+local helpers    = require("helpers")
+local t          = helpers.readJson(gears.filesystem.get_cache_dir() .. "json/settings.json").iconTheme
 
-
-local custom = {
+local custom     = {
   {
     name = "org.wezfurlong.wezterm",
     to = "terminal"
