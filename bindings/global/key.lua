@@ -62,9 +62,9 @@ awful.keyboard.append_global_keybindings {
     on_press    = function() awful.spawn(apps.terminal, { floating = true }) end
   },
   awful.key {
-    modifiers   = { mod.shift },
+    modifiers   = { mod.super, mod.shift },
     key         = 'd',
-    description = 'open a rofi-pass',
+    description = 'open passord manager on rofi',
     group       = 'launcher',
     on_press    = function() awful.spawn("rofi-rbw --no-help") end
   },
