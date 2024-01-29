@@ -37,16 +37,9 @@ zinit light zsh-users/zsh-history-substring-search
 zinit ice wait'2' lucid
 zinit light zdharma-continuum/history-search-multi-word
 
+# zinit light tranzystorek-io/zellij-zsh
 # FZF
 zinit ice from"gh-r" as"command"
 zinit light junegunn/fzf
 
-# EXA
-zinit ice wait lucid from"gh-r" as"program" mv"bin/eza* -> eza"
-zinit light eza-community/eza
-
-# BAT
-zinit ice wait lucid from"gh-r" as"program" mv"*/bat -> bat" atload"export BAT_THEME='Nord'"
-zinit light sharkdp/bat
-
-# vim:ft=zsh
+zini light wfxr/forgit
