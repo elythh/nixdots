@@ -13,12 +13,12 @@ alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 alias mkdir="mkdir -p"
 alias fm='ranger'
 alias wifi="nmtui-connect"
-alias ls="eza --color=auto --icons"
+alias ls="eza --color=auto --icons=always"
 alias l="ls -l"
 alias la="ls -a"
 alias lla="ls -la"
 alias lt="ls --tree"
-alias cat="bat --color always"
+# alias cat="bat --color always"
 alias grep='grep --color=auto'
 alias v='nvim'
 alias mv='mv -v'
@@ -27,7 +27,6 @@ alias rm='rm -vr'
 alias commit="git add . && git commit -m"
 alias push="git push"
 alias g=git
-alias ga='git add'
 alias gaa='git add --all'
 alias gam='git am'
 alias gama='git am --abort'
