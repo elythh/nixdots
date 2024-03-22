@@ -1,0 +1,11 @@
+.brightnessPopup {
+	@include popup;
+}
+
+.brtPopupIcon {
+	@include popupIcon;
+}
+
+.brtPopupBar {
+	@include popupBar;
+}

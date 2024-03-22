@@ -1,0 +1,30 @@
+// Components
+@import "musicControls";
+
+.music {
+	color: $onSurface;
+	background: $surface;
+	font-family: $font;
+	border-radius: 6px;
+	padding: 12px;
+	min-width: 240px;
+}
+
+.artist {
+	font-weight: 500;
+	font-size: 0.75rem;
+	padding: 0 6px;
+}
+
+.cover {
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+	border-radius: 6px;
+	min-height: 60px;
+	min-width: 60px;
+}
+
+.title {
+	font-weight: 500;
+	padding: 0 6px;
+}

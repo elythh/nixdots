@@ -1,0 +1,11 @@
+.volumePopup {
+	@include popup;
+}
+
+.volPopupIcon {
+	@include popupIcon;
+}
+
+.volPopupBar {
+	@include popupBar;
+}

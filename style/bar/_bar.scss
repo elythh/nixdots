@@ -1,0 +1,34 @@
+// Components
+// top
+@import "modules/launcher";
+@import "modules/system";
+@import "modules/weather";
+
+// center
+@import "modules/workspaces";
+
+// bottom
+@import "modules/tray";
+@import "modules/battery";
+@import "modules/bluetooth";
+@import "modules/lock";
+@import "modules/swallow";
+@import "modules/audio";
+@import "modules/net";
+@import "modules/clock";
+@import "modules/power";
+
+// general config
+.bar {
+	@include barWindow;
+}
+
+// top section
+.utilsBox {
+	@include barSection;
+}
+
+// bottom section
+.systemInfo {
+	@include barSection;
+}
