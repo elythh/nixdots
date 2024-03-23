@@ -4,7 +4,7 @@
   font-family: "Material Design Icons", "Iosevka Nerd Font Mono", Inter, Roboto, sans-serif; }
 
 .launcherIcon {
-  background: #191919;
+  background: #212126;
   font-family: symbolsnerdfontmono;
   border-radius: 12px;
   margin: 6px 4px;
@@ -12,11 +12,11 @@
   min-height: 1.5rem;
   transition: all 0.2s cubic-bezier(0.3, 0, 1, 1); }
   .launcherIcon:hover {
-    background: #262626; }
+    background: #2d2d34; }
 
 .systemUsage {
-  color: #dfdddd;
-  background: #191919;
+  color: #e9ecf2;
+  background: #212126;
   font-family: symbolsnerdfontmono;
   border-radius: 12px;
   margin: 4px; }
@@ -26,11 +26,11 @@
   margin: 1px; }
 
 .cpuProgress {
-  color: #b183ba;
+  color: #f17ac6;
   padding: 4px 4px;
   margin: 0.1rem;
   font-size: 4px;
-  background: #121111;
+  background: #18181c;
   min-height: 1.2rem;
   min-width: 1.2rem; }
 
@@ -39,16 +39,16 @@
   margin: 1px; }
 
 .memProgress {
-  color: #7d95ae;
+  color: #7aaaff;
   padding: 4px 4px;
   margin: 0.1rem;
   font-size: 4px;
-  background: #121111;
+  background: #18181c;
   min-height: 1.2rem;
   min-width: 1.2rem; }
 
 .weather {
-  background: #191919;
+  background: #212126;
   font-family: "Material Symbols Sharp", Roboto;
   border-radius: 12px;
   margin: 6px 4px;
@@ -57,7 +57,7 @@
   min-width: 1rem;
   transition: all 0.2s cubic-bezier(0.3, 0, 1, 1); }
   .weather:hover {
-    background: #262626; }
+    background: #2d2d34; }
 
 .workspaces {
   background: transparent;
@@ -65,22 +65,25 @@
   .workspaces button {
     transition: all 0.3s cubic-bezier(0.2, 0, 0, 1), border 0.35s cubic-bezier(0.2, 0, 0, 1);
     margin: 6px 3px;
-    color: #dfdddd;
-    background: #191919;
+    color: #e9ecf2;
+    background: #212126;
     margin: 5px 3px;
     min-width: 0.6rem;
     min-height: 0.6rem;
     color: transparent;
-    background: #dfdddd;
+    background: #e9ecf2;
     border-radius: 99px; }
     .workspaces button:hover {
-      color: #b183ba; }
+      color: #f17ac6; }
     .workspaces button:hover {
-      background: #b183ba; }
+      background: #f17ac6; }
     .workspaces button.focused {
       border-radius: 18px;
-      background: #7d95ae;
+      background: #7aaaff;
       padding: 8px 0; }
+    .workspaces button.empty {
+      background: #212126;
+      color: #e9ecf2; }
 
 .tray {
   margin: 0; }
@@ -97,33 +100,33 @@
 .battery {
   transition: all 0.3s cubic-bezier(0.2, 0, 0, 1), border 0.35s cubic-bezier(0.2, 0, 0, 1);
   margin: 6px 3px;
-  color: #dfdddd;
-  background: #191919; }
+  color: #e9ecf2;
+  background: #212126; }
   .battery:hover {
-    color: #b183ba; }
+    color: #f17ac6; }
 
 .bluetooth {
   transition: all 0.3s cubic-bezier(0.2, 0, 0, 1), border 0.35s cubic-bezier(0.2, 0, 0, 1);
   margin: 6px 3px;
-  color: #dfdddd;
-  background: #191919; }
+  color: #e9ecf2;
+  background: #212126; }
   .bluetooth:hover {
-    color: #b183ba; }
+    color: #f17ac6; }
 
 .bluetooth-paired {
-  color: #dfdddd; }
+  color: #e9ecf2; }
 
 .bluetooth-active {
-  color: #dfdddd; }
+  color: #e9ecf2; }
 
 .bluetooth-disabled {
-  color: #666666;
+  color: #686878;
   transition: all 0.3s cubic-bezier(0.2, 0, 0, 1), border 0.35s cubic-bezier(0.2, 0, 0, 1); }
   .bluetooth-disabled:hover {
-    color: #af575b; }
+    color: #f25c5c; }
 
 .lock {
-  background: #0e0d0d;
+  background: #13111e;
   font-size: 24px;
   border-radius: 12px;
   margin: 2px 4px;
@@ -132,30 +135,30 @@
 .swallow {
   transition: all 0.3s cubic-bezier(0.2, 0, 0, 1), border 0.35s cubic-bezier(0.2, 0, 0, 1);
   margin: 6px 3px;
-  color: #dfdddd;
-  background: #191919; }
+  color: #e9ecf2;
+  background: #212126; }
   .swallow:hover {
-    color: #b183ba; }
+    color: #f17ac6; }
 
 .audio {
   transition: all 0.3s cubic-bezier(0.2, 0, 0, 1), border 0.35s cubic-bezier(0.2, 0, 0, 1);
   margin: 6px 3px;
-  color: #dfdddd;
-  background: #191919; }
+  color: #e9ecf2;
+  background: #212126; }
   .audio:hover {
-    color: #b183ba; }
+    color: #f17ac6; }
 
 .network {
   transition: all 0.3s cubic-bezier(0.2, 0, 0, 1), border 0.35s cubic-bezier(0.2, 0, 0, 1);
   margin: 6px 3px;
-  color: #dfdddd;
-  background: #191919; }
+  color: #e9ecf2;
+  background: #212126; }
   .network:hover {
-    color: #b183ba; }
+    color: #f17ac6; }
 
 .clock {
-  background: #191919;
-  color: #dfdddd;
+  background: #212126;
+  color: #e9ecf2;
   font-family: robotomono;
   font-weight: 800;
   border-radius: 12px;
@@ -163,8 +166,8 @@
   padding: 6px; }
 
 .power {
-  color: #af575b;
-  background: #0e0d0d;
+  color: #f25c5c;
+  background: #13111e;
   font-size: 24px;
   border-radius: 12px;
   margin: 6px 4px;
@@ -172,36 +175,36 @@
   min-height: 1.5rem;
   transition: all 0.2s cubic-bezier(0.3, 0, 1, 1); }
   .power:hover {
-    background: #262626;
-    color: #b7686c; }
+    background: #2d2d34;
+    color: #f47474; }
 
 .bar {
   border-radius: calc(12px + 2px);
-  color: #dfdddd;
-  background: #121111;
+  color: #e9ecf2;
+  background: #18181c;
   font-family: roboto;
   border-radius: 14px;
   padding: 2px; }
 
 .utilsBox {
   border-radius: 12px;
-  color: #dfdddd;
-  background: #191919;
+  color: #e9ecf2;
+  background: #212126;
   font-family: symbolsnerdfontmono;
   margin: 4px;
   padding: 6px; }
 
 .systemInfo {
   border-radius: 12px;
-  color: #dfdddd;
-  background: #191919;
+  color: #e9ecf2;
+  background: #212126;
   font-family: symbolsnerdfontmono;
   margin: 4px;
   padding: 6px; }
 
 .launcher {
-  color: #dfdddd;
-  background: #121111;
+  color: #e9ecf2;
+  background: #18181c;
   font-family: roboto;
   border-radius: 12px;
   margin: 0 0 16px;
@@ -212,11 +215,11 @@
   margin: 3px;
   padding: 3px; }
   .launcherApp:focus {
-    background: #191919; }
+    background: #212126; }
 
 .launcherEntry {
-  caret-color: #dfdddd;
-  background: #191919;
+  caret-color: #e9ecf2;
+  background: #212126;
   border-radius: 10px;
   margin: 6px;
   padding: 3px 12px; }
@@ -232,8 +235,8 @@
   font-size: 12px; }
 
 .desktopMenu {
-  background: #121111;
-  color: #dfdddd;
+  background: #18181c;
+  color: #e9ecf2;
   font-family: roboto;
   border-radius: 14px;
   padding: 6px 3px; }
@@ -244,15 +247,15 @@
   padding: 6px 12px;
   transition: all 0.2s cubic-bezier(0.3, 0, 1, 1); }
   .desktopMenuItem:hover {
-    background: #262626;
-    color: #ebeaea; }
+    background: #2d2d34;
+    color: #f9fafb; }
 
 .desktopMenuItemIcon {
   font-family: symbolsnerdfontmono;
   padding: 2px 8px 2px 2px; }
 
 .separator {
-  background: #0e0d0d;
+  background: #13111e;
   padding: 1px 3px; }
 
 .desktopIcons {
@@ -263,14 +266,14 @@
   padding: 6px;
   transition: all 200ms cubic-bezier(0, 0, 1, 1); }
   .desktopIcon:hover {
-    background: rgba(177, 131, 186, 0.7); }
+    background: rgba(241, 122, 198, 0.7); }
 
 .desktopIconLabel {
-  color: #0e0d0d;
+  color: #13111e;
   font-family: roboto; }
 
 .brightnessPopup {
-  background: #121111;
+  background: #18181c;
   border-radius: 12px;
   margin: 6px;
   padding: 12px;
@@ -285,16 +288,16 @@
   .brtPopupBar scale {
     min-height: 12px; }
   .brtPopupBar trough {
-    background: rgba(25, 25, 25, 0.5);
+    background: rgba(33, 33, 38, 0.5);
     border-radius: 24px;
     min-height: 12px; }
   .brtPopupBar highlight {
-    background: #dfdddd;
+    background: #e9ecf2;
     border-radius: 24px;
     min-width: 12px; }
 
 .volumePopup {
-  background: #121111;
+  background: #18181c;
   border-radius: 12px;
   margin: 6px;
   padding: 12px;
@@ -309,17 +312,17 @@
   .volPopupBar scale {
     min-height: 12px; }
   .volPopupBar trough {
-    background: rgba(25, 25, 25, 0.5);
+    background: rgba(33, 33, 38, 0.5);
     border-radius: 24px;
     min-height: 12px; }
   .volPopupBar highlight {
-    background: #dfdddd;
+    background: #e9ecf2;
     border-radius: 24px;
     min-width: 12px; }
 
 .controls {
-  color: #b7b7b7;
-  background: #191919;
+  color: #DCDFE4;
+  background: #212126;
   border-radius: 24px;
   margin: 12px 6px; }
 
@@ -328,7 +331,7 @@
   font-size: 0.75rem;
   padding: 0 12px; }
   .controlsPrev:hover {
-    background: #595959;
+    background: #5c5c6a;
     border-radius: 24px; }
 
 .controlsPlayPause {
@@ -336,7 +339,7 @@
   font-size: 0.75rem;
   padding: 0 12px; }
   .controlsPlayPause:hover {
-    background: #595959;
+    background: #5c5c6a;
     border-radius: 24px; }
 
 .controlsNext {
@@ -344,12 +347,12 @@
   font-size: 0.75rem;
   padding: 0 12px; }
   .controlsNext:hover {
-    background: #595959;
+    background: #5c5c6a;
     border-radius: 24px; }
 
 .music {
-  color: #dfdddd;
-  background: #0e0d0d;
+  color: #e9ecf2;
+  background: #13111e;
   font-family: roboto;
   border-radius: 6px;
   padding: 12px;
@@ -375,14 +378,14 @@
   border-radius: calc(12px + 2px);
   margin: 5px 5px 5px 12px;
   min-width: 25rem;
-  background-color: #121111; }
+  background-color: #18181c; }
   .notification .normal {
-    border: 1px solid #7d95ae; }
+    border: 1px solid #7aaaff; }
   .notification .critical {
     border: 1px solid red; }
   .notification:hover {
-    border: 2px solid #b183ba;
-    background-color: #0a0a0a; }
+    border: 2px solid #f17ac6;
+    background-color: #111114; }
 
 .notifications widget:last-child .notification {
   margin-bottom: 15px; }
@@ -404,7 +407,7 @@
   transition: all 0.3s cubic-bezier(0.2, 0, 0, 1), border 0.35s cubic-bezier(0.2, 0, 0, 1);
   padding: 0.5rem 0; }
   .notification .actions .action-button:hover {
-    background: #b7b7b7; }
+    background: #DCDFE4; }
 
 .notification .text {
   margin: 0.5rem; }
@@ -412,5 +415,5 @@
     margin-bottom: 0.2rem;
     font-weight: 500; }
   .notification .text .body {
-    color: #dfdddd;
+    color: #e9ecf2;
     font-weight: 500; }
