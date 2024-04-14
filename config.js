@@ -1,6 +1,7 @@
 import { Bar } from "./js/bar/Bar.js";
 import { NotificationPopup } from "./js/notifs/NotificationPopup.js";
 import { controlpanel } from "./js/control-panel/ControlPanel.js";
+import { forMonitors } from "./js/utils.js";
 import { applauncher } from "./js/app-launcher/AppLauncher.js";
 // import { ImageWindow } from "./js/image-window/ImageWindow.js";
 
@@ -30,9 +31,9 @@ App.config({
     app_launcher: 300,
   },
   windows: [
-    Bar(),
+    ...forMonitors(Bar),
     // ImageWindow(),
-    NotificationPopup(),
+    ...forMonitors(NotificationPopup),
     controlpanel,
     applauncher,
   ],
