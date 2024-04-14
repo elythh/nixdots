@@ -1,0 +1,199 @@
+@mixin bar-button {
+  padding: 0.8rem 0;
+  background: $base01;
+  border-radius: 4px;
+  min-width: 1.8rem;
+  min-height: 1.8rem;
+
+  transition: all 0.5s cubic-bezier(0.17, 0.67, 0.24, 1.46);
+
+  &:hover {
+    background: $base02;
+  }
+}
+
+@mixin bar-label {
+  border-radius: 4px;
+  padding: 0.8em 0;
+  background: $base01;
+}
+
+.bar {
+  * {
+    all: unset;
+    font-family: "ZedMono NF";
+    font-size: 0.9rem;
+  }
+
+  .cbox {
+    margin: 0rem 0.65rem 0rem 0em;
+    background: $base00;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+    padding: 0.2em;
+  }
+
+  button {
+    @include bar-button();
+  }
+
+  .app-l-button {
+    padding: 2px 0;
+
+    .icon {
+      color: $base05;
+    }
+  }
+
+  .workspaces {
+    background: $base01;
+    border-radius: 4px;
+
+    button {
+      padding: 0;
+      margin: 0px 2px;
+
+      box {
+        margin: 0.4em 0.8em;
+        transition: all 0.4s cubic-bezier(0.17, 0.67, 0.24, 1.46);
+
+        background: transparentize($base05, 0.9);
+        border-radius: 0.1rem;
+      }
+
+      &.occupied {
+        box {
+          background: $base05;
+        }
+      }
+
+      &.active {
+        box {
+          min-height: 3em;
+          background: $base0D;
+        }
+      }
+
+      &:first-child {
+        margin-top: 4px;
+      }
+
+      &:last-child {
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  .tray {
+    min-height: 1.6rem;
+    padding: 2px 0;
+    border-radius: 4px;
+    background: $base01;
+
+    button {
+      padding: 0;
+      margin: 0px 2px;
+
+      &:first-child {
+        margin-top: 4px;
+      }
+
+      &:last-child {
+        margin-bottom: 4px;
+      }
+
+      &:hover {
+        color: $base02;
+      }
+    }
+  }
+
+  .tray-button {
+    padding: 2px 0;
+
+    .icon {
+      color: $base05;
+      transition: all 0.2s cubic-bezier(1, 1, 1, 1);
+      -gtk-icon-transform: rotate(180deg);
+
+      &.showing {
+        -gtk-icon-transform: rotate(0deg);
+      }
+    }
+  }
+
+  .battery-label {
+    @include bar-label();
+
+    .battery-bulb {
+      background: $base0C;
+      min-height: 3px;
+      border-radius: 0.2em 0.2em 0px 0px;
+      margin: 0 0.8em;
+    }
+
+    levelbar {
+      trough {
+        border: 2px solid $base0C;
+        border-radius: 0.2em;
+        margin: 0 0.6em;
+
+        block.filled {
+          background: $base0C;
+        }
+      }
+    }
+
+    &.charging {
+      .battery-bulb {
+        background: $base0A;
+      }
+
+      levelbar {
+        trough {
+          border: 2px solid $base0A;
+        }
+
+        block.filled {
+          background: $base0A;
+        }
+      }
+    }
+
+    label {
+      color: $base05;
+      margin-top: 0.4em;
+      font-size: 0.8em;
+      padding: 0;
+    }
+  }
+
+  .clock {
+    @include bar-label();
+
+    .icon {
+      color: $base0C;
+    }
+
+    label {
+      color: $base05;
+    }
+  }
+
+  .control-button {
+    .speaker {
+      color: $base0B;
+    }
+
+    .microphone {
+      color: $base0A;
+    }
+
+    .network {
+      color: $base0D;
+    }
+
+    .power {
+      color: $base08;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+window#image-window {
+  all: unset;
+  background: transparent;
+
+  .image-box {
+    margin: 0.8rem;
+    border: 2px solid #050505;
+    border-radius: 12px;
+    box-shadow: 0 0 2px 2px #050505;
+    min-width: 200px;
+    min-height: 200px;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}

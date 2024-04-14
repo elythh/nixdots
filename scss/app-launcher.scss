@@ -1,0 +1,53 @@
+window#app_launcher {
+  background: transparent;
+
+  * {
+    all: unset;
+    font-family: "ZedMono NF";
+    font-size: 0.9rem;
+  }
+
+  button {
+    padding: 0.2rem;
+    border-radius: 4px;
+    min-width: 2rem;
+    min-height: 2rem;
+
+    color: $base05;
+
+    transition: background 0.5s cubic-bezier(0.17, 0.67, 0.24, 1.46);
+
+    &:focus {
+      background: $base02;
+      color: $base0D;
+    }
+
+    &:hover {
+      background: $base02;
+    }
+  }
+
+  .entry {
+    padding: 0.4rem;
+    background: $base00;
+    border-radius: 4px;
+  }
+
+  .title {
+    margin: 0 0.8rem;
+  }
+
+  .al-out-box {
+    background: $base00;
+    padding: 0.6rem;
+    margin: 0.65rem;
+    border-radius: 4px;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+
+    .al-in-box {
+      background: $base01;
+      border-radius: 4px;
+      padding: 0.6rem;
+    }
+  }
+}
