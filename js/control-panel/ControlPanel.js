@@ -27,9 +27,9 @@ const BottomBox = () =>
 
 export const controlpanel = PopupWindow({
   name: "control_panel",
-  transition: "slide_right",
+  transition: "slide_up",
   transition_duration: 300,
-  anchor: ["bottom", "left"],
+  anchor: ["bottom", "right"],
   margins: [4],
   keymode: "on-demand",
   child: Widget.Box({

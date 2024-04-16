@@ -4,15 +4,15 @@
   font-size: 0.9rem; }
 
 .bar .cbox {
-  margin: 0rem 0.65rem 0rem 0em;
+  margin: 0.35rem 0rem 0rem 0em;
   background: #101618;
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
   padding: 0.2em; }
 
 .bar button {
-  padding: 0.8rem 0;
-  background: #1c2121;
   border-radius: 4px;
+  padding: 0 0.8rem;
+  background: #1c2121;
   min-width: 1.8rem;
   min-height: 1.8rem;
   transition: all 0.5s cubic-bezier(0.17, 0.67, 0.24, 1.46); }
@@ -20,7 +20,7 @@
     background: #0c1012; }
 
 .bar .app-l-button {
-  padding: 2px 0; }
+  padding: 0 2px; }
   .bar .app-l-button .icon {
     color: #dadada; }
 
@@ -29,93 +29,101 @@
   border-radius: 4px; }
   .bar .workspaces button {
     padding: 0;
-    margin: 0px 2px; }
+    margin: 2px 0; }
     .bar .workspaces button box {
-      margin: 0.4em 0.8em;
+      margin: 0.8em 0.4rem;
       transition: all 0.4s cubic-bezier(0.17, 0.67, 0.24, 1.46);
       background: rgba(218, 218, 218, 0.1);
       border-radius: 0.1rem; }
     .bar .workspaces button.occupied box {
       background: #dadada; }
     .bar .workspaces button.active box {
-      min-height: 3em;
+      min-width: 3em;
       background: #62a5b8; }
     .bar .workspaces button:first-child {
-      margin-top: 4px; }
+      margin-left: 4px; }
     .bar .workspaces button:last-child {
-      margin-bottom: 4px; }
+      margin-right: 4px; }
 
 .bar .tray {
-  min-height: 1.6rem;
-  padding: 2px 0;
   border-radius: 4px;
-  background: #1c2121; }
+  padding: 0 0.8rem;
+  background: #1c2121;
+  min-width: 1.8rem;
+  min-height: 1.8rem;
+  padding: 0 2px; }
   .bar .tray button {
     padding: 0;
-    margin: 0px 2px; }
+    margin: 2px 0; }
     .bar .tray button:first-child {
-      margin-top: 4px; }
+      margin-left: 2px; }
     .bar .tray button:last-child {
-      margin-bottom: 4px; }
+      margin-right: 2px; }
     .bar .tray button:hover {
       color: #0c1012; }
 
 .bar .tray-button {
-  padding: 2px 0; }
+  padding: 0 2px; }
   .bar .tray-button .icon {
     color: #dadada;
     transition: all 0.2s cubic-bezier(1, 1, 1, 1);
-    -gtk-icon-transform: rotate(180deg); }
+    -gtk-icon-transform: rotate(90deg); }
     .bar .tray-button .icon.showing {
-      -gtk-icon-transform: rotate(0deg); }
+      -gtk-icon-transform: rotate(270deg); }
 
 .bar .battery-label {
   border-radius: 4px;
-  padding: 0.8em 0;
-  background: #1c2121; }
+  padding: 0 0.8rem;
+  background: #1c2121;
+  min-width: 1.8rem;
+  min-height: 1.8rem; }
   .bar .battery-label .battery-bulb {
     background: #ce89df;
-    min-height: 3px;
-    border-radius: 0.2em 0.2em 0px 0px;
-    margin: 0 0.8em; }
+    min-width: 3px;
+    border-radius: 0.2em 0 0 0.2em;
+    margin: 0.9em 0; }
   .bar .battery-label levelbar trough {
     border: 2px solid #ce89df;
     border-radius: 0.2em;
-    margin: 0 0.6em; }
+    margin: 0.5rem 0em; }
     .bar .battery-label levelbar trough block.filled {
       background: #ce89df; }
   .bar .battery-label.charging .battery-bulb {
-    background: #5a85db; }
+    background: #76a4e3; }
   .bar .battery-label.charging levelbar trough {
-    border: 2px solid #5a85db; }
+    border: 2px solid #76a4e3; }
   .bar .battery-label.charging levelbar block.filled {
-    background: #5a85db; }
+    background: #76a4e3; }
   .bar .battery-label label {
     color: #dadada;
-    margin-top: 0.4em;
-    font-size: 0.8em;
+    margin-left: 12px;
     padding: 0; }
 
 .bar .clock {
   border-radius: 4px;
-  padding: 0.8em 0;
-  background: #1c2121; }
+  padding: 0 0.8rem;
+  background: #1c2121;
+  min-width: 1.8rem;
+  min-height: 1.8rem; }
   .bar .clock .icon {
     color: #ce89df; }
   .bar .clock label {
     color: #dadada; }
 
-.bar .control-button .speaker {
-  color: #76a4e3; }
-
-.bar .control-button .microphone {
-  color: #5a85db; }
-
-.bar .control-button .network {
-  color: #62a5b8; }
-
-.bar .control-button .power {
-  color: #e86b6b; }
+.bar .control-button {
+  border-radius: 4px;
+  padding: 0 0.8rem;
+  background: #1c2121;
+  min-width: 1.8rem;
+  min-height: 1.8rem; }
+  .bar .control-button .speaker {
+    color: #76a4e3; }
+  .bar .control-button .microphone {
+    color: #8ccf7e; }
+  .bar .control-button .network {
+    color: #62a5b8; }
+  .bar .control-button .power {
+    color: #e86b6b; }
 
 window.notification-popups box.notifications {
   padding: 4px; }
@@ -233,9 +241,9 @@ window#control_panel {
     window#control_panel .audio-slider.speaker scale trough highlight {
       background: #76a4e3; }
     window#control_panel .audio-slider.microphone .icon {
-      color: #5a85db; }
+      color: #8ccf7e; }
     window#control_panel .audio-slider.microphone scale trough highlight {
-      background: #5a85db; }
+      background: #8ccf7e; }
   window#control_panel .power-box {
     background: #1c2121;
     padding: 0.8em; }

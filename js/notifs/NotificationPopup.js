@@ -94,7 +94,7 @@ function Notification(n) {
   const transition_value = 300;
 
   const inner = Widget.Revealer({
-    transition: "slide_left",
+    transition: "slide_down",
     transition_duration: transition_value,
     child: notif_ev_box,
   });
@@ -163,7 +163,7 @@ export function NotificationPopup(monitor = 0) {
     monitor,
     name: `notifications${monitor}`,
     class_name: "notification-popups",
-    anchor: ["top", "right"],
+    anchor: ["top"],
     child: list,
   });
 }

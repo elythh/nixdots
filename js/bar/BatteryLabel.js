@@ -9,17 +9,15 @@ export const BatteryLabel = () => {
       .bind("charging")
       .as((ch) => (ch ? "battery-label charging" : "battery-label")),
     visible: battery.bind("available"),
-    vertical: true,
     children: [
       Widget.Box({
         className: "battery-bulb",
         hexpand: false,
       }),
       Widget.LevelBar({
-        vertical: true,
-        heightRequest: 28,
+        widthRequest: 48,
         value: batteryPercent,
-        inverted: true,
+        inverted: true
       }),
       Widget.Label({}).hook(
         battery,

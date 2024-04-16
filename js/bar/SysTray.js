@@ -3,7 +3,6 @@ const systemTray = await Service.import("systemtray");
 const tray = () =>
   Widget.Box({
     className: "tray",
-    vertical: true,
     spacing: 4,
     children: systemTray.bind("items").as((items) => {
       return items.map((item) =>
@@ -22,8 +21,8 @@ export const SysTray = () => {
 
   const trayRevealer = Widget.Revealer({
     revealChild: false,
-    transition_duration: 100,
-    transition: "slide_up",
+    transition_duration: 200,
+    transition: "slide_left",
     child: tray(),
     setup: (self) =>
       self.hook(showSysTray, () => {
@@ -36,7 +35,7 @@ export const SysTray = () => {
     child: Widget.Icon({
       class_name: "icon",
       size: 10,
-      icon: "go-down-symbolic",
+      icon: "keyboard-hide-symbolic",
       setup: (self) =>
         self.hook(showSysTray, () =>
           self.toggleClassName("showing", showSysTray.value),
@@ -49,7 +48,6 @@ export const SysTray = () => {
 
   return Widget.Box({
     spacing: 8,
-    vertical: true,
     children: [trayRevealer, button],
   });
 };

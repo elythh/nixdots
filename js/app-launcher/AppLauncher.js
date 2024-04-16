@@ -100,14 +100,14 @@ const Applauncher = ({ width = 500, height = 500, spacing = 12 }) => {
 // there needs to be only one instance
 export const applauncher = PopupWindow({
   name: WINDOW_NAME,
-  transition: "slide_right",
+  transition: "slide_up",
   transition_duration: 300,
-  anchor: ["top", "left"],
+  anchor: ["bottom", "left"],
   margins: [4],
   keymode: "exclusive",
   child: Applauncher({
-    width: 380,
-    height: 300,
+    width: 300,
+    height: 380,
     spacing: 12,
   }),
 });

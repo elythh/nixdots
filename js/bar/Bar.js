@@ -5,20 +5,20 @@ import { ControlButton } from "./ControlButton.js";
 import { BatteryLabel } from "./BatteryLabel.js";
 import { AppLauncherButton } from "./AppLauncherButton.js";
 
-const Top = () =>
+const StartBox = () =>
   Widget.Box({
-    vertical: true,
-    vpack: "start",
-    css: "margin: 0.8rem 0.2em",
+    // vertical: true,
+    hpack: "start",
+    css: "margin: 0.2rem 0.8em",
     spacing: 8,
     children: [AppLauncherButton(), Workspaces()],
   });
 
-const Bottom = () =>
+const EndBox = () =>
   Widget.Box({
-    css: "margin: 0.8rem 0.2em",
-    vertical: true,
-    vpack: "end",
+    css: "margin: 0.2rem 0.8em",
+    // vertical: true,
+    hpack: "end",
     spacing: 8,
     children: [SysTray(), BatteryLabel(), Clock(), ControlButton()],
   });
@@ -28,12 +28,12 @@ export const Bar = (monitor = 0) =>
     name: `bar-${monitor}`,
     class_name: "bar",
     monitor,
-    anchor: ["top", "bottom", "left"],
+    anchor: ["right", "bottom", "left"],
     exclusivity: "exclusive",
     child: Widget.CenterBox({
       class_name: "cbox",
-      vertical: true,
-      start_widget: Top(),
-      end_widget: Bottom(),
+      // vertical: true,
+      start_widget: StartBox(),
+      end_widget: EndBox(),
     }),
   });
