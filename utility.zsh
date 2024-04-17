@@ -1,6 +1,12 @@
 ##
 ## Utility Functions
 ##
+function fs() {
+  BUFFER+="$(gum filter)"
+  zle -w end-of-line
+}
+zle -N fs
+bindkey "^t" fs
 
 function _smooth_fzf() {
   local fname
@@ -107,16 +113,6 @@ function toppy() {
 
 function cd() {
 	builtin cd "$@" && command ls --group-directories-first --color=auto -F
-}
-
-function git-svn(){
-  if [[ ! -z "$1" && ! -z "$2" ]]; then
-          echo "Starting clone/copy ..."
-          repo=$(echo $1 | sed 's/\/$\|.git$//')
-          svn export "$repo/trunk/$2"
-  else
-          echo "Use: git-svn <repository> <subdirectory>"
-  fi  
 }
 
 _fzf_comprun() {
