@@ -1,7 +1,13 @@
 {
-  description = "Elyth's personal dotfile";
-
   inputs = {
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
+    devshell.url = "github:numtide/devshell";
+
+    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+
+    nixos-extra-modules.url = "github:oddlama/nixos-extra-modules";
+
     # Nixpkgs Stable
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -71,71 +77,17 @@
     nixvim.url = "github:elythh/nixvim";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-stable,
-    hm,
-    stylix,
-    nixpkgs-f2k,
-    nixos-hardware,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    system = "x86_64-linux";
-    pkgsStable = import nixpkgs-stable {inherit system;};
-  in {
-    # NixOS configuration entrypoint
-    # Available through 'nixos-rebuild --flake .#your-hostname'
-    nixosConfigurations = {
-      grovetender = nixpkgs.lib.nixossystem {
-        modules = [
-          hm.nixosModule
-          nixos-hardware.nixosModules.lenovo-thinkpad-p14s-amd-gen2
-          {
-            nixpkgs.overlays = [
-              (final: prev: {
-                awesome = nixpkgs-f2k.packages.${system}.awesome-git;
-              })
-            ];
-          }
-          # > Our main nixos configuration file <
-          ./hosts/grovetender/configuration.nix
-        ];
-      };
-      aurelionite = nixpkgs.lib.nixosSystem {
-        modules = [
-          hm.nixosModule
-          ./hosts/aurelionite/configuration.nix
-        ];
-      };
-      mithrix = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./hosts/mithrix/configuration.nix
-        ];
-      };
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        ./nix/devshell.nix
+        ./nix/hosts.nix
+        ./nix/pkgs.nix
+        ./nix/globals.nix
+      ];
+
+      systems = [
+        "x86_64-linux"
+      ];
     };
-    # Standalone home-manager configuration entrypoint
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations = {
-      "gwen@grovetender" = inputs.hm.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs pkgsStable outputs;};
-        modules = [
-          # > Our main home-manager configuration file <
-          ./home/gwen/grovetender.nix
-          stylix.homeManagerModules.stylix
-        ];
-      };
-      "gwen@aurelionite" = inputs.hm.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs pkgsStable outputs;};
-        modules = [
-          # > Our main home-manager configuration file <
-          ./home/gwen/aurelionite.nix
-          stylix.homeManagerModules.stylix
-        ];
-      };
-    };
-  };
 }

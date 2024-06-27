@@ -1,0 +1,4 @@
+.direnv/flake-inputs
+.direnv
+.direnv/bin
+.pre-commit-config.yaml

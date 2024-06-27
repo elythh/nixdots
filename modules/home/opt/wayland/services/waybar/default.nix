@@ -13,8 +13,7 @@
       # package = inputs.waybar.packages."${pkgs.system}".waybar;
       settings = {
         mainBar = {
-          layer = config.var.theme.waybar.position;
-          position = config.var.theme.waybar.position;
+          inherit (config.var.theme.waybar.position) layer position;
           spacing = 0;
           "margin-top" =
             if
